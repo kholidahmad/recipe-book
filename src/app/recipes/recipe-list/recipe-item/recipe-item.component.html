@@ -1,16 +1,18 @@
-<a
-  href="#"
-  class="list-group-item clearfix"
+<span
+  href="#" type="button"
+  class="card m-2 p-3"
+  style="border-radius: 10px;-webkit-box-shadow: 3px 5px 5px -1px rgba(0,0,0,0.61); 
+box-shadow: 3px 5px 5px -1px rgba(0,0,0,0.61);"
   (click)="onSelected()">
+  <span class="d-flex justify-content-center">
+    <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-responsive"
+      style="max-height: 50px;">
+  </span>
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{ recipe.description }}</p>
   </div>
-  <span class="pull-right">
-        <img
-          [src]="recipe.imagePath"
-          alt="{{ recipe.name }}"
-          class="img-responsive"
-          style="max-height: 50px;">
-      </span>
-</a>
+</span>
