@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row d-flex justify-content-center">
   <div class="col-xs-12">
     <img
       [src]="recipe.imagePath"
       alt="{{ recipe.name }}"
-      class="img-responsive"
+      class="img-responsive p-5"
       style="max-height: 300px;">
   </div>
 </div>
@@ -14,38 +14,19 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="dropdown mr-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Manage
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Save Data</a>
-        <a class="dropdown-item" href="#">Fetch Data</a>
-      </div>
-    </div>
-    <div
-      class="btn-group"
-      appDropdown>
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle">
-        Manage Recipe <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
     {{ recipe.description }}
   </div>
-</div>
+</div><br>
 <div class="row">
   <div class="col-xs-12">
+    <button (click)="onAddToShoppingList()" class="btn btn-white"><i class="fas fa-plus mr-2 text-success"></i>add to shopping list</button>
+    <button (click)="onEditRecipe()" class="btn btn-white"><i class="fas fa-edit mr-2 text-warning"></i>Edit Recipe</button>
+    <button class="btn btn-white"><i class="fas fa-trash mr-2 text-danger"></i>Delete Recipe</button>
+  </div>
+</div><br>
+<div class="row">
+  <div class="col-xs-12">
+    Bahan - bahan :
     <ul class="list-group">
       <li
         class="list-group-item"

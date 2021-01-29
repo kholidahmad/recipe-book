@@ -18,7 +18,7 @@ export class RecipeService {
         new Ingredient('French Fries', 20)
       ]),
     new Recipe('Big Fat Burger',
-      'What else you need to say?',
+      'Burger dengan potongan daging kucing yang presisi',
       'assets/img/burger.png',
       [
         new Ingredient('Buns', 2),
@@ -37,6 +37,11 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipeByID(index: number){
+    console.log(this.recipes[index]);
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {

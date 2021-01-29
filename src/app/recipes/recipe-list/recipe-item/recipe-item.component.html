@@ -1,9 +1,12 @@
 <span
-  href="#" type="button"
+  [routerLink]="[index]"
+  routerLinkActive="actip"
+  type="button"
   class="card m-2 p-3"
-  style="border-radius: 10px;-webkit-box-shadow: 3px 5px 5px -1px rgba(0,0,0,0.61); 
-box-shadow: 3px 5px 5px -1px rgba(0,0,0,0.61);"
-  (click)="onSelected()">
+  style="border-radius: 10px;-webkit-box-shadow: 0px 3px 17px 0px rgba(235,235,235,1);
+    -moz-box-shadow: 0px 3px 17px 0px rgba(235,235,235,1);
+    box-shadow: 0px 3px 17px 0px rgba(235,235,235,1);"
+   >
   <span class="d-flex justify-content-center">
     <img
       [src]="recipe.imagePath"
