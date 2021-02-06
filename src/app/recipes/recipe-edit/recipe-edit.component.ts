@@ -52,7 +52,7 @@ export class RecipeEditComponent implements OnInit {
         'name': new FormControl(null, Validators.required),
         'amount': new FormControl(null, [
           Validators.required,
-          Validators.pattern(/^[1-9]+[0-9]*$/)
+          Validators.pattern(/^[1-9]+[0-9]*$/) //regex. cek hanya boleh angka positif
         ])
       })
     );
@@ -92,6 +92,7 @@ export class RecipeEditComponent implements OnInit {
       }
     }
 
+    // nama tiap input yg dipanggil di form
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),
       'imagePath': new FormControl(recipeImagePath, Validators.required),

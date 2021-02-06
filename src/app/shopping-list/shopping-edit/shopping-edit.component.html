@@ -4,7 +4,7 @@
     <form  (ngSubmit)="onSubmit(dataShopping)" #dataShopping="ngForm">
       <div class="row">
         <div class="col-xl-8 form-group">
-          <label for="name">Name</label>
+          <label for="name">Nama</label>
           <input
             type="text"
             id="name"
@@ -14,7 +14,7 @@
             ngModel>
         </div>
         <div class="col-xl-4 form-group">
-          <label for="amount">Amount</label>
+          <label for="amount">Jumlah</label>
           <input
             type="number"
             id="amount"
@@ -30,9 +30,9 @@
           <button class="btn btn-success" type="submit" [disabled]="!dataShopping.valid">
             {{editMode ? 'Update': 'Tambah'}}
           </button>
-          <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">
-            Delete</button>
-          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+          <button class="btn" type="button" (click)="onClear()"><i class="fas fa-history text-warning"></i></button>
+          <button class="btn" type="button" (click)="onDelete()" *ngIf="editMode">
+          <i class="fas fa-trash text-danger"></i></button>
         </div>
       </div>
     </form>

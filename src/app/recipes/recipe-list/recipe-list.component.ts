@@ -11,7 +11,7 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
-  // setap ada subscribe sebaiknya diakhiri dengan OnDestroy
+  // setiap ada subscribe sebaiknya diakhiri dengan OnDestroy
   recipes: Recipe[];
   subscription: Subscription;
 

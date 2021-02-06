@@ -5,3 +5,7 @@
     box-shadow: 0 2px 8px 0px rgba(0, 0, 0, 0.14),
     0 3px 6px -7px rgba(156, 39, 176, 0.4);
 }
+h1,h2,h3,h4,h5,h6 {
+    color: #005e00;
+    font-family: lora;
+}
