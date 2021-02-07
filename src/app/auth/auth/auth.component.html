@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <div class="row d-flex justify-content-center">
+    <div *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="alert alert-danger" *ngIf="isError">
+      <p>{{ isError }}</p>
+    </div>
+    <div
+      class="col-xl-5 col-sm-12 p-3"
+      style="border: 1px solid rgb(212, 211, 211); border-radius: 10px"
+      *ngIf="!isLoading"
+    >
+      <form #formauth="ngForm" (ngSubmit)="onSubmit_FormAuth(formauth)">
+        <h2 class="text-center m-3">
+          <i class="fas fa-lock mr-2"></i> Login ke akun Anda
+        </h2>
+        <hr class="bg-success" />
+        <div class="form-group">
+          <label for="email"><b> Email :</b></label>
+          <input
+            type="email"
+            class="form-control mb-2"
+            name="email"
+            ngModel
+            required
+            email
+          />
+
+          <label for="password"><b> Password :</b></label>
+          <input
+            type="password"
+            class="form-control mb-5"
+            name="password"
+            ngModel
+            required
+            password
+            minlength="8"
+          />
+          <button
+            class="btn btn-block btn-success mb-2"
+            type="submit"
+            [disabled]="!formauth.valid"
+          >
+            {{ isLoginMode ? "Login" : "Sing Up" }}
+          </button>
+          <button
+            class="btn btn-block btn-outline-primary mb-4"
+            (click)="onSwitchMode()"
+          >
+            {{ isLoginMode ? "Switch to Sing Up" : "Switch to Login" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

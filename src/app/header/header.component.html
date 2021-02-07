@@ -24,8 +24,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+      <ul class="navbar-nav m-auto">
+        <li class="nav-item" *ngIf="isAuthenticated">
           <a
             class="nav-link"
             [routerLink]="['/recipes']"
@@ -44,8 +44,26 @@
             <b>Shopping List</b>
           </a>
         </li>
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a
+            class="nav-link"
+            [routerLink]="['/auth']"
+            routerLinkActive="active"
+          >
+            <b>Authenticated</b>
+          </a>
+        </li>
       </ul>
       <div class="dropdown mr-3">
+        <a
+          class="btn btn-white"
+          style="border: 1px solid white"
+          type="button"
+          style="cursor: pointer"
+          *ngIf="isAuthenticated"
+          (click)="onLogout()"
+          ><span class="text-white">Logout</span></a
+        >
         <button
           class="btn btn-white dropdown-toggle"
           style="border: 1px solid white"
@@ -54,12 +72,23 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
+          *ngIf="isAuthenticated"
         >
           <span class="text-white">Manage</span>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
-          <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+          <a
+            class="dropdown-item"
+            style="cursor: pointer"
+            (click)="onSaveData()"
+            >Save Data</a
+          >
+          <a
+            class="dropdown-item"
+            style="cursor: pointer"
+            (click)="onFetchData()"
+            >Fetch Data</a
+          >
         </div>
       </div>
     </div>
