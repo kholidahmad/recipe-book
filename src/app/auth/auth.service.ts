@@ -4,7 +4,6 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
-import { clear } from "console";
 
 // interface diexport agar bisa diimport dari luar, yaitu auth.component.ts
 export interface AuthResponseData {

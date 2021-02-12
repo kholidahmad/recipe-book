@@ -1,8 +1,15 @@
+import { PlaceHoderDirective } from "./../../shared/placeholder/placeholder.directive";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  ComponentFactoryResolver,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { Observable } from "rxjs";
 import { AuthService, AuthResponseData } from "./../auth.service";
+import { AlertComponent } from "src/app/shared/alert/alert.component";
 
 @Component({
   selector: "app-auth",
@@ -13,8 +20,13 @@ export class AuthComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
   isError: string = null;
+  @ViewChild(PlaceHoderDirective) alertHost: PlaceHoderDirective;
 
-  constructor(private authSrvc: AuthService, private router: Router) {}
+  constructor(
+    private authSrvc: AuthService,
+    private router: Router,
+    private componentFactoryResolvr: ComponentFactoryResolver
+  ) {}
 
   ngOnInit(): void {}
 
@@ -53,5 +65,16 @@ export class AuthComponent implements OnInit {
     );
 
     form.reset();
+  }
+
+  // showErrorAlert(pesan: string) {
+  //   const alertCompFctry = this.componentFactoryResolvr.resolveComponentFactory(
+  //     AlertComponent
+  //   );
+  // }
+
+  onHandleError() {
+    console.log("no errorrrr");
+    this.isError = null;
   }
 }
