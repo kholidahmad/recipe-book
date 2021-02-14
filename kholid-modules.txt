@@ -1,0 +1,17 @@
+npm install bootstrap@4.5.0
+npm install jquery@3.5.1
+npm install popper.js@1.14.3
+npm install --save @fortawesome/fontawesome-free
+
+"styles": [
+          "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "src/styles.css"
+        ],
+"scripts": [
+  "./node_modules/jquery/dist/jquery.min.js",
+  "./node_modules/popper.js/dist/umd/popper.min.js",
+  "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+  "./node_modules/@fortawesome/fontawesome-free/js/brands.js",
+  "./node_modules/@fortawesome/fontawesome-free/js/solid.js",
+  "./node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"
+]
