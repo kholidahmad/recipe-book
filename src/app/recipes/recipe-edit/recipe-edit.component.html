@@ -1,81 +1,103 @@
 <div class="row">
   <div class="col-xl-12">
-		<div class="container">
-			<!-- Recipe menggunakan Reactive Forms Module -->
-			<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <!-- Recipe menggunakan Reactive Forms Module -->
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
         <label class="mt-3" for="name"><b>Nama Menu :</b></label>
         <input
-        type="text"
-        id="name"
-        formControlName="name"
-        class="form-control">
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control"
+        />
 
         <label class="mt-3" for="imagePath"><b>Image URL :</b></label>
         <input
-        type="text"
-        id="imagePath"
-        formControlName="imagePath"
-        class="form-control"
-        #imagePath>
+          type="text"
+          id="imagePath"
+          formControlName="imagePath"
+          class="form-control"
+          #imagePath
+        />
 
-        <img [src]="imagePath.value" class="img-responsive p-3 mt-3" width="400px"><br>
-        
+        <img
+          [src]="imagePath.value"
+          class="img-responsive p-3 mt-3"
+          width="400px"
+        /><br />
+
         <label class="mt-3" for="description"><b>Deskripsi :</b></label>
         <textarea
-        type="text"
-        id="description"
-        class="form-control"
-        formControlName="description"
-        rows="6"></textarea>
+          type="text"
+          id="description"
+          class="form-control"
+          formControlName="description"
+          rows="6"
+        ></textarea>
 
         <div class="row">
-					<div class="col-xl-12" formArrayName="ingredients">
+          <div class="col-xl-12" formArrayName="ingredients">
             <label class="mt-3"> <b>Bahan :</b> </label>
-						<div class="row"
-							*ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
-							[formGroupName]="i"
-							style="margin-top: 10px;">
-							<div class="col-xl-8">
-								<input
-									type="text"
-									class="form-control"
-									formControlName="name">
-							</div>
-							<div class="col-xl-2">
-								<input
-									type="number"
-									class="form-control"
-									formControlName="amount">
-							</div>
-							<div class="col-xl-2">
-								<button
-									type="button"
-									class="btn"
-									(click)="onDeleteIngredient(i)"><i class="fas fa-times-circle text-danger"></i></button>
-							</div>
-						</div>
-						<div class="row">
-              <div class="col-xl-12">
+            <!-- *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls error ketika production. jadi harus dipindah di typescript-->
+            <div
+              class="row"
+              *ngFor="let ingredientCtrl of ingredientsControls; let i = index"
+              [formGroupName]="i"
+              style="margin-top: 10px"
+            >
+              <div class="col-xl-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                />
+              </div>
+              <div class="col-xl-2">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="amount"
+                />
+              </div>
+              <div class="col-xl-2">
                 <button
-                type="button"
-                class="btn"
-                (click)="onAddIngredient()"><i class="fas fa-plus text-success"></i> </button>
-							</div>
+                  type="button"
+                  class="btn"
+                  (click)="onDeleteIngredient(i)"
+                >
+                  <i class="fas fa-times-circle text-danger"></i>
+                </button>
+              </div>
             </div>
-            <hr class="bg-success">
+            <div class="row">
+              <div class="col-xl-12">
+                <button type="button" class="btn" (click)="onAddIngredient()">
+                  <i class="fas fa-plus text-success"></i>
+                </button>
+              </div>
+            </div>
+            <hr class="bg-success" />
             <div class="row mb-5">
               <div class="col-xl-12 d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Batal</button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  (click)="onCancel()"
+                >
+                  Batal
+                </button>
                 <button
                   type="submit"
                   class="btn btn-success pl-5 pr-5"
-                  [disabled]="!recipeForm.valid"><i class="fas fa-save mr-2"></i>Simpan</button>
+                  [disabled]="!recipeForm.valid"
+                >
+                  <i class="fas fa-save mr-2"></i>Simpan
+                </button>
               </div>
             </div>
-					</div>
-				</div>
-				
-			</form>
-		</div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

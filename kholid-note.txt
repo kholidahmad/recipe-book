@@ -1,0 +1,9 @@
+sebelum deployment harus production : ng build --prod
+tulis Firebase API key di environment
+ganti api key di auth service
+ng build --prod lagi
+npm install -g firebase-tools
+firebase login
+firebase init
+
+https://bukurezep.web.app/

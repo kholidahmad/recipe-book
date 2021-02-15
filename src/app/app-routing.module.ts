@@ -1,41 +1,31 @@
-import { AuthGuard } from "./auth/auth.guard";
-import { AuthComponent } from "./auth/auth/auth.component";
-import { RecipeResolverService } from "./recipes/recipe-resolver.service";
-import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
-import { RecipeStartComponent } from "./recipes/recipe-start/recipe-start.component";
-import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+
+// loadChildren adalah fitur untuk LAZYLOADING
+// - path pada tiap modul harus kosong sehingga hanya ditulis di app-routing.module ini
+// - import module terkait di auth.module juga harus dihapus
+// - dan tambahkan preloadingStrategy: PreloadAllModules
 
 export const routes: Routes = [
   { path: "", redirectTo: "/recipes", pathMatch: "full" },
   {
     path: "recipes",
-    component: RecipesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: "", component: RecipeStartComponent },
-      { path: "baru", component: RecipeEditComponent }, //'baru' harus diurutan pertama agar tidak terkena id
-      {
-        path: ":id",
-        component: RecipeDetailComponent,
-        resolve: [RecipeResolverService], // resolve disini berfungsi untuk mengambil data dulu sebelum meload router ini
-      },
-      {
-        path: ":id/edit",
-        component: RecipeEditComponent,
-        resolve: [RecipeResolverService],
-      },
-    ],
+    loadChildren: "./recipes/recipes.module#RecipesModule",
   },
-  { path: "shopping-list", component: ShoppingListComponent },
-  { path: "auth", component: AuthComponent },
+  {
+    path: "shopping-list",
+    loadChildren: "./shopping-list/shopping-list.module#ShoppingListModule",
+  },
+  {
+    path: "auth",
+    loadChildren: "./auth/auth.module#AuthModule",
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,3 +1,4 @@
+import { environment } from "./../../environments/environment";
 import { Router } from "@angular/router";
 import { User } from "./user.model";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
@@ -30,7 +31,8 @@ export class AuthService {
     // url endpoint dari https://firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDgzmQpfVOECJWBxkTEQBMa4T-YXE3QPFg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+          environment.FirebaseAPI,
         {
           email: email,
           password: password,
@@ -71,7 +73,8 @@ export class AuthService {
     // lihat dokumentasi di https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDgzmQpfVOECJWBxkTEQBMa4T-YXE3QPFg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
+          environment.FirebaseAPI,
         {
           email: email,
           password: password,
